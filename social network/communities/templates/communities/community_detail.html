@@ -1,0 +1,18 @@
+{% extends 'network/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card mb-3">
+        <img src="{{ community.photo.url }}" class="card-img-top" alt="{{ community.name }}">
+        <div class="card-body">
+          <h1 class="card-title">{{ community.name }}</h1>
+          <p class="card-text">{{ community.description }}</p>
+          <p class="card-text"><small class="text-muted">Created by: {{ community.creator.username }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

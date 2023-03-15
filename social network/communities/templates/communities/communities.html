@@ -1,0 +1,38 @@
+{% extends 'network/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="my-4">Communities</h1>
+        </div>
+        <form class="form-inline my-2 my-lg-0" action="{% url 'communities:communities' %}" method="get">
+            <input class="form-control mr-sm-2" type="text" placeholder="Поиск по названию" aria-label="Search"
+                   name="search" value="{{ search_query }}">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Поиск</button>
+        </form>
+        <div class="col-md-4">
+            <a href="{% url 'communities:create_community' %}" class="btn btn-primary btn-lg btn-block mt-3">Create
+                Community</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        {% for community in communities %}
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <img src="{{ community.photo.url }}" alt="{{ community.name }}" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title">{{ community.name }}</h4>
+                    <p class="card-text">{{ community.description }}</p>
+                    <a href="{% url 'communities:community_detail' community.id %}" class="btn btn-primary">View</a>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Created by {{ community.creator }}</small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

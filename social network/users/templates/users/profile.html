@@ -1,0 +1,40 @@
+{% extends 'network/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="{{ user.profile.photo.url }}" alt="profile-photo" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.username }}</h5>
+          <p class="card-text">{{ user.profile.status }}</p>
+          <div>
+            <a href="{% url 'users:edit_profile' %}">Edit_profile</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Friends</h5>
+          <ul class="list-group">
+            {% for friend in user.profile.friends.all %}
+            <li class="list-group-item">
+              <a href="{% url 'users:profile' friend.username %}">
+                <img src="{{ friend.profile.photo.url }}" alt="friend-photo" class="img-thumbnail">
+                {{ friend.username }}
+              </a>
+            </li>
+            {% empty %}
+            <li class="list-group-item">No friends yet</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

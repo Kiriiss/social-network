@@ -1,0 +1,41 @@
+{% extends 'network/base.html' %}
+{% load static %}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to My Social Network!</h1>
+    <p class="lead">Connect with your friends and family, share your thoughts, and discover new things.</p>
+    <hr class="my-4">
+    <p>Join our community and start exploring today.</p>
+    {% if not user.is_authenticated %}
+    <a class="btn btn-primary btn-lg" href="{% url 'users:signup' %}" role="button">Sign Up Now</a>
+    {% endif %}
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title">Connect with Friends</h4>
+                <p class="card-text">Find your friends and connect with them online.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title">Share Your Thoughts</h4>
+                <p class="card-text">Post your thoughts and ideas, and get feedback from others.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title">Discover New Things</h4>
+                <p class="card-text">Explore new topics and interests, and learn something new every day.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
